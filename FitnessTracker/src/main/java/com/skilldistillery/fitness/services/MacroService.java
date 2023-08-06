@@ -7,9 +7,9 @@ import com.skilldistillery.fitness.entities.Macros;
 public interface MacroService {
 	
 	List<Macros> listAllMacros();
-	Macros getMacros(int macroId);
+	Macros getMacros(Integer macroId);
 	Macros create(Macros newMacros);
-	Macros update(int macroId, Macros newMacro);
-	boolean delete(int macroId);
+	Macros update(Integer macroId, Macros Macro);
+	boolean delete(Integer macroId);
 
 }
