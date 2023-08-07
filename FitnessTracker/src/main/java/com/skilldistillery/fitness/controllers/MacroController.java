@@ -2,6 +2,7 @@ package com.skilldistillery.fitness.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,27 +31,57 @@ public class MacroController {
 	}
 	
 	@GetMapping("macros/{id}")
-	Macros getMacrosById(@PathVariable("id") Integer macrosId) {
-		return macroService.getMacros(macrosId);
+	Macros getMacrosById(@PathVariable("id") Integer macrosId, HttpServletResponse res) {
+		Macros macros = macroService.getMacros(macrosId);
+		if( macros == null) {
+			res.setStatus(404);
+		}
+		return macros;
 		
 	}
 	
 	@PostMapping("macros")
-	Macros createMacros(@RequestBody Macros macros) {
-		return macroService.create(macros);
+	Macros createMacros(@RequestBody Macros macros, HttpServletResponse res, HttpServletRequest req) {
+				try {
+					macros = macroService.create(macros);
+					res.setStatus(201);
+					StringBuffer url = req.getRequestURL();
+					url.append("/").append(macros.getId());
+					res.setHeader("Location", url.toString());
+				} catch (Exception e) {
+					e.printStackTrace();
+					res.setStatus(400);
+					macros = null;
+				}
+				return macros;
 	}
 	
 	@PutMapping("macros/{id}")
-	Macros updateMacros(@PathVariable ("id") Integer macrosId, @RequestBody Macros macros) {
-		return macroService.update(macrosId, macros);
+	Macros updateMacros(@PathVariable ("id") Integer macrosId, @RequestBody Macros macros, HttpServletResponse res) {
+				try {
+					macros = macroService.update(macrosId, macros);
+					if(macros == null) {
+						res.setStatus(404);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					res.setStatus(400);
+					macros = null;
+				}
+				return macros;
 	}
 	
 	@DeleteMapping("macros/{id}")
 	public void deleteMacros(@PathVariable("id") Integer macrosId, HttpServletResponse res) {
-		if(macroService.delete(macrosId)) {
-			res.setStatus(204);
-		}else {
-			res.setStatus(404);
+		try {
+			if(macroService.delete(macrosId)) {
+				res.setStatus(204);
+			}else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
 		}
 	
 	}
