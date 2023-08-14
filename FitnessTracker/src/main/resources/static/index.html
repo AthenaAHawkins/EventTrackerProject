@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Macros</title>
+<script src="js/script.js"></script>
+</head>
+<body>
+
+<h1>Macro Tracker</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Macros name</th>
+				
+			</th>
+		</tr>
+	</thead>
+	<tbody id="macrosTableBody"></tbody>
+</table>
+
+<div id ="macrosDetailsDiv"></div>
+
+
+<form name ="addMacros" id = "newMacrosForm">
+<input type="hidden" name="id" value=""> 
+<label for = "food">Food Name: </label>
+<input type="text" name = "food"><br>
+<label for = "protein">Protein: </label>
+<input type="text" name = "protein"><br>
+<label for = "fat">Fats: </label>
+<input type="text" name = "fat"><br>
+<label for = "carbohydrates">Carbohydrates: </label>
+<input type="text" name = "carbohydrates"><br>
+<label for = "calories">Calories: </label>
+<input type="text" name = "calories"><br>
+<label for = "servingSize">Serving Size: </label>
+<input type="text" name = "servingSize"><br>
+<label for = "numOfServings">Number Of Servings: </label>
+<input type="text" name = "numOfServings"><br>
+<label for = "meal">Meal: </label>
+<input type="text" name = "meal"><br>
+ <button type = "submit"  id="createMacroButton">create a new Entry</button>
+ <button type="button" id="updateMacroButton" >Update a Macro</button>
+ <button type = "submit" id = "deleteMacroButton">Delete Macro</button>
+</form>
+
+<div id="totalCalories"></div>
+
+</body>
+</html>
