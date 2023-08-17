@@ -49,7 +49,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fitnessdb`;
-INSERT INTO `Macros` (`id`, `food`, `protein`, `fat`, `carbohydrates`, `calories`, `serving_size`, `number_of_servings`, `meal`) VALUES (1, NULL, 33, 3, 0, 150, '5 oz', 1, 'dinner');
+INSERT INTO `Macros` (`id`, `food`, `protein`, `fat`, `carbohydrates`, `calories`, `serving_size`, `number_of_servings`, `meal`) VALUES (1, 'chicken Breast', 33, 3, 0, 150, '5 oz', 1, 'dinner');
+INSERT INTO `Macros` (`id`, `food`, `protein`, `fat`, `carbohydrates`, `calories`, `serving_size`, `number_of_servings`, `meal`) VALUES (2, 'shrimp', 20.4, 0.3, 0.2, 84, '3 oz', 1, 'dinner');
+INSERT INTO `Macros` (`id`, `food`, `protein`, `fat`, `carbohydrates`, `calories`, `serving_size`, `number_of_servings`, `meal`) VALUES (3, 'peanuts', 7.3, 14, 4.6, 161, '1 oz', 1, NULL);
 
 COMMIT;
 
